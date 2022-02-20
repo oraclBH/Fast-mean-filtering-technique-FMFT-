@@ -1,9 +1,9 @@
 %**********************************************************************
-% ´°¿ÚÎŞ¹Ø¿ìËÙ¾ùÖµÂË²¨Ëã·¨ÊµÏÖ
-% Author £ºchensz
+% çª—å£æ— å…³å¿«é€Ÿå‡å€¼æ»¤æ³¢ç®—æ³•å®ç°
+% Author ï¼šBH
 % Data     :  2022/02/16 
-% Parameter declarations : w ¾ùÖµÂË²¨´°¿Ú°ë¾¶´óĞ¡, ¼ò»¯¼ÆËã£¬±ßÔµ²»´¦Àí
-% Paper£ºFast mean filtering technique (FMFT)
+% Parameter declarations : w å‡å€¼æ»¤æ³¢çª—å£åŠå¾„å¤§å°, ç®€åŒ–è®¡ç®—ï¼Œè¾¹ç¼˜ä¸å¤„ç†
+% Paperï¼šFast mean filtering technique (FMFT)
 %***********************************************************************
 
 function outIM = FMF(inIM, w) 
@@ -19,9 +19,9 @@ outOne(w+1:m-w, w+1:n-w, :) = (2*w+1)*(2*w+1);
 
 for t = 1:c
     img = inIM(:, :, t);
-     s = zeros(1, n);  %¼ÇÂ¼ÂË²¨´°¿ÚºáÏòËù¾­ÇøÓòµÄÃ¿Ò»ÁĞµÄÏñËØºÍ
+     s = zeros(1, n);  %è®°å½•æ»¤æ³¢çª—å£æ¨ªå‘æ‰€ç»åŒºåŸŸçš„æ¯ä¸€åˆ—çš„åƒç´ å’Œ
      
-    for  row = 1:m   %% ĞĞ´¦Àí
+    for  row = 1:m   %% è¡Œå¤„ç†
         sm = 0;
         if row<=w || row >m-w
             continue;
@@ -29,22 +29,22 @@ for t = 1:c
         if row == w+1
             for y = 1:n
                 for k = -w:w
-                    s(y) = s(y) + img(row+k, y);  %% ¼ÆËãµÚÒ»¸öÓĞĞ§ĞĞ¶ÔÓ¦µÄÀÛ¼ÆÊı×é£¬Ã¿¸öÊı×éÔªËØ¶ÔÓ¦´°¿ÚµÄ´óĞ¡
+                    s(y) = s(y) + img(row+k, y);  %% è®¡ç®—ç¬¬ä¸€ä¸ªæœ‰æ•ˆè¡Œå¯¹åº”çš„ç´¯è®¡æ•°ç»„ï¼Œæ¯ä¸ªæ•°ç»„å…ƒç´ å¯¹åº”çª—å£çš„å¤§å°
                 end
             end
         else
             for y = 1:n
-                s(y) = s(y) + img(row+w, y) - img(row-w-1, y);  %% ¸üĞÂÀÛ¼ÆÊı×é
+                s(y) = s(y) + img(row+w, y) - img(row-w-1, y);  %% æ›´æ–°ç´¯è®¡æ•°ç»„
             end
         end
         
-        for col = 1:n  %%ÁĞ´¦Àí
+        for col = 1:n  %%åˆ—å¤„ç†
             if col<=w||col >n-w
                 continue;
             end
             if col ==w+1
                 for k = -w:w
-                    sm =sm + s(col+k);   %% µÚÒ»¸öÓĞĞ§´°¿ÚÊı¾İÀÛ¼ÓºÍ
+                    sm =sm + s(col+k);   %% ç¬¬ä¸€ä¸ªæœ‰æ•ˆçª—å£æ•°æ®ç´¯åŠ å’Œ
                 end
                 outIM(row, col, t) = sm;
             else
@@ -55,7 +55,7 @@ for t = 1:c
 end
 
 outIM = outIM ./outOne;
-outIM = outIM(w+1:m-w, w+1:n-w, :);     %%¼ôÇĞÎ´ÂË²¨µÄ±ß½ç
+outIM = outIM(w+1:m-w, w+1:n-w, :);     %%å‰ªåˆ‡æœªæ»¤æ³¢çš„è¾¹ç•Œ
 end
 
                                                               

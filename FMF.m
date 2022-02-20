@@ -29,12 +29,12 @@ for t = 1:c
         if row == w+1
             for y = 1:n
                 for k = -w:w
-                    s(y) = s(y) + img(row+k, y);  %% 计算第一个有效行对应的累计数组，每个数组元素对应窗口的大小
+                    s(y) = s(y) + img(row+k, y);  %% 计算第一个有效行对应的累计数组，每个数组元素对应窗口的大小 
                 end
             end
         else
             for y = 1:n
-                s(y) = s(y) + img(row+w, y) - img(row-w-1, y);  %% 更新累计数组
+                s(y) = s(y) + img(row+w, y) - img(row-w-1, y);  %% 更新累计数组 
             end
         end
         
@@ -48,7 +48,7 @@ for t = 1:c
                 end
                 outIM(row, col, t) = sm;
             else
-                outIM(row, col, t) = outIM(row, col-1, t) - s(col-w-1) + s(col+w);
+                outIM(row, col, t) = outIM(row, col-1, t) - s(col-w-1) + s(col+w); 
             end
         end
     end

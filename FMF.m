@@ -58,25 +58,3 @@ outIM = outIM ./outOne;
 outIM = outIM(w+1:m-w, w+1:n-w, :);     %%剪切未滤波的边界
 end
 
-                                                              
-
-
-
-
-
-
-
-
-
-
-                  
-
-
-
-
-
-
-
-
-
-
